@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ article.title }}</title>
+</head>
+<body>
+
+<h1>{{ article.title }}</h1>
+
+<p><i>{{ article.pub_date }}</i></p>
+
+<p>{{ article.description }}</p>
+
+<h3>Фото:</h3>
+{% for img in article.images.all %}
+    <div>
+        <img src="{{ img.image.url }}" style="max-width:400px;">
+        <p>{{ img.title }}</p>
+    </div>
+{% empty %}
+    <p>Фото немає</p>
+{% endfor %}
+
+</body>
+</html>

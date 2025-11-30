@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Головна</title>
+</head>
+<body>
+
+<h1>Всі статті</h1>
+
+<h3>Категорії</h3>
+<ul>
+    {% for cat in categories %}
+        <li><a href="{% url 'category_articles' slug=cat.slug %}">{{ cat.category }}</a></li>
+    {% endfor %}
+</ul>
+
+<hr>
+
+{% for article in articles %}
+    <div style="margin-bottom: 25px;">
+        <h2>
+            <a href="{% url 'article_detail' slug=article.slug %}">
+                {{ article.title }}
+            </a>
+        </h2>
+
+        <p>{{ article.description|truncatechars:200 }}</p>
+        <small>{{ article.pub_date }}</small>
+        <br>
+        <b>Категорія:</b> {{ article.category }}
+    </div>
+{% endfor %}
+
+</body>
+</html>
